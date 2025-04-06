@@ -13,7 +13,7 @@ class DishesService
     public function __construct(
         private readonly DishRepository $dishRepository,
     ) {
-    }
+    } 
 
     public function create(CreateDishDTO $dto): Dish
     {
