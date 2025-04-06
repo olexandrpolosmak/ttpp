@@ -22,7 +22,7 @@ class OrderCartTest extends TestCase
     public function testAddDish(): void
     {
         $orderCart = OrderCart::empty();
-        $dish = new OrderCartDish(1, 'Dish 1', 10.0, 1);
+        $dish = new OrderCartDish(1, 'Dish 1', 10.0);
         $orderCart->addDish($dish);
         $this->assertCount(1, $orderCart->getDishes());
     }
@@ -30,7 +30,7 @@ class OrderCartTest extends TestCase
     public function testRemoveDish(): void
     {
         $orderCart = OrderCart::empty();
-        $dish = new OrderCartDish(1, 'Dish 1', 10.0, 1);
+        $dish = new OrderCartDish(1, 'Dish 1', 10.0);
         $orderCart->addDish($dish);
         $orderCart->removeDish(1);
         $this->assertCount(0, $orderCart->getDishes());
@@ -39,7 +39,7 @@ class OrderCartTest extends TestCase
     public function testIncrementDish(): void
     {
         $orderCart = OrderCart::empty();
-        $dish = new OrderCartDish(1, 'Dish 1', 10.0, 1);
+        $dish = new OrderCartDish(1, 'Dish 1', 10.0);
         $orderCart->addDish($dish);
         $orderCart->incrementDish(1);
         $this->assertEquals(2, $orderCart->getDishes()[0]->getCount());
@@ -48,7 +48,7 @@ class OrderCartTest extends TestCase
     public function testGetTotal(): void
     {
         $orderCart = OrderCart::empty();
-        $dish = new OrderCartDish(1, 'Dish 1', 10.0, 1);
+        $dish = new OrderCartDish(1, 'Dish 1', 10.0);
         $orderCart->addDish($dish);
         $this->assertEquals(10.0, $orderCart->getTotal());
     }
@@ -64,7 +64,7 @@ class OrderCartTest extends TestCase
     public function testGetDishes(): void
     {
         $orderCart = OrderCart::empty();
-        $dish = new OrderCartDish(1, 'Dish 1', 10.0, 1);
+        $dish = new OrderCartDish(1, 'Dish 1', 10.0);
         $orderCart->addDish($dish);
         $this->assertCount(1, $orderCart->getDishes());
     }
@@ -78,8 +78,8 @@ class OrderCartTest extends TestCase
     public function testAddMultipleDishes(): void
     {
         $orderCart = OrderCart::empty();
-        $dish1 = new OrderCartDish(1, 'Dish 1', 10.0, 1);
-        $dish2 = new OrderCartDish(2, 'Dish 2', 15.0, 1);
+        $dish1 = new OrderCartDish(1, 'Dish 1', 10.0);
+        $dish2 = new OrderCartDish(2, 'Dish 2', 15.0);
         $orderCart->addDish($dish1);
         $orderCart->addDish($dish2);
         $this->assertCount(2, $orderCart->getDishes());
@@ -88,7 +88,7 @@ class OrderCartTest extends TestCase
     public function testGetTotalWithOrderPackage(): void
     {
         $orderCart = OrderCart::empty();
-        $dish = new OrderCartDish(1, 'Dish 1', 10.0, 1);
+        $dish = new OrderCartDish(1, 'Dish 1', 10.0);
         $orderCart->addDish($dish);
         $orderPackage = new OrderCartPackage(1, 'Package 1', 5.0);
         $orderCart->setOrderPackage($orderPackage);
